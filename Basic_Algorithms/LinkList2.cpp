@@ -92,13 +92,18 @@ void LenList(LinkList *L)
     printf("length is %d\n",i);
 } 
 void GetMid(LinkList *L)
-{ 
-	LinkList *p = L->next;
-	LinkList *q = L->next->next;
-    while(q != NULL)
+{  
+	LinkList *p = L->next;		//生成的是一个带头节点的链表，L表示头节点，L->next才表示第一个节点
+	LinkList *q = L->next;
+    while(q->next != NULL)
     {
-        q = q->next->next;
-		p = p->next;
+		if(q->next->next != NULL){
+			q = q->next->next;
+			p = p->next;
+		}
+		else{
+			q = q->next;
+		}
         
     }
     printf("mid is %d\n",p->data);
