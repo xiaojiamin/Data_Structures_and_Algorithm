@@ -3,6 +3,9 @@
 
 int main()
 {
+	//ÊäÈë£ºaaabaaa
+	//		aabb
+	//Êä³ö£ºstr1 < str2 
 	char str1[10],str2[10]; 
 	gets(str1);
 	gets(str2);
