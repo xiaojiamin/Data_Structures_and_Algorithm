@@ -10,16 +10,15 @@ typedef struct{
 }SqList;				//定义顺序表结构体
 
 //基本操作函数声明
-void InitList(SqList *&L);	//初始化线性表
-void Destroy(SqList *L);	//销毁线性表
-int ListEmpty(SqList *L);	//清空线性表，将L置为空表
-int ListLength(SqList *L);	//求表长，返回L中元素个数
-void DispList(SqList *L);	//输出表，若表为非空，输出L中所有元素的值
-int GetElem(SqList *L,int i,ElemType &e);	//取表中元素，用e返回表中第i个元素的值
-int LocateElem(SqList *L,ElemType e);	//定位表中元素，返回表中第一个与e相等的元素位序
-int ListInsert(SqList *&L,int i,ElemType e);
-//插入元素，在L的第i个位置插入e的值，L长度增加1
-int ListDelete(SqList *L,int i,ElemType &e);	//删除元素，将L中第i个元素删除，用e返回其值，L长度减少1
+void InitList(SqList *&L);	//1.初始化线性表
+void Destroy(SqList *L);	//2.销毁线性表
+int ListEmpty(SqList *L);	//3.清空线性表，将L置为空表
+int ListLength(SqList *L);	//4.求表长，返回L中元素个数
+void DispList(SqList *L);	//5.输出表，若表为非空，输出L中所有元素的值
+int GetElem(SqList *L,int i,ElemType &e);	//6.取表中元素，用e返回表中第i个元素的值
+int LocateElem(SqList *L,ElemType e);	//7.定位表中元素，返回表中第一个与e相等的元素位序
+int ListInsert(SqList *&L,int i,ElemType e);	//8.插入元素，在L的第i个位置插入e的值，L长度增加1
+int ListDelete(SqList *L,int i,ElemType &e);	//9.删除元素，将L中第i个元素删除，用e返回其值，L长度减少1
 
 int main()
 {
@@ -74,7 +73,7 @@ int ListLength(SqList *L)	//求表长，返回L中元素个数
 void DispList(SqList *L)	//输出表，若表为非空，输出L中所有元素的值
 {
 	int i;
-	if(ListEmpty(L))
+	if(ListEmpty(L))		//！！！讲真这句是什么鬼？
 	return;
 	for(i=0;i<L->length;i++)
 		printf("%c",L->elem[i]);
