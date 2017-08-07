@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<math.h>
 
 int a[1000000];
 //如果数组大小超过10的6次方，需要将其定义在主函数之外

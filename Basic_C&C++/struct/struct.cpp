@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<math.h>
 
 struct Point{
 	int x,y;
@@ -17,10 +16,12 @@ int main()
 	for(int i = 0;i < num;i++)
 		printf("%d,%d\n",pt[i].x,pt[i].y);
 	printf("\n");
+	
 	Point A;	//使用默认构造函数，不经初始化就定义结构体变量A 
 	A.x = 3;
 	A.y = 4;
 	printf("%d,%d\n",A.x,A.y);
+	
 	Point B(5,6);	//使用定义构造函数，初始化定义结构体变量A 
 	printf("%d,%d\n",B.x,B.y);
 	return 0;
