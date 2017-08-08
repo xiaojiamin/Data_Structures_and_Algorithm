@@ -73,10 +73,10 @@ int ListLength(SqList *L)	//求表长，返回L中元素个数
 void DispList(SqList *L)	//输出表，若表为非空，输出L中所有元素的值
 {
 	int i;
-	if(ListEmpty(L))		//！！！讲真这句是什么鬼？
+	if(ListEmpty(L))		//如果顺序表长度为0即为空表ListEmpty()的返回值就是1
 	return;
 	for(i=0;i<L->length;i++)
-		printf("%c",L->elem[i]);
+		printf("%c",L->elem[i]);		//顺序表实质还是用数组存储数据，这里还是按照数组下标进行操作
 	printf("\n");
 }
 int GetElem(SqList *L,int i,ElemType &e)	//取表中元素，用e返回表中第i个元素的值
