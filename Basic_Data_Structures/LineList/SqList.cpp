@@ -12,7 +12,7 @@ typedef struct{
 //基本操作函数声明
 void InitList(SqList *&L);	//1.初始化线性表
 void Destroy(SqList *L);	//2.销毁线性表
-int ListEmpty(SqList *L);	//3.清空线性表，将L置为空表
+int ListEmpty(SqList *L);	//3.判断线性表是否为空
 int ListLength(SqList *L);	//4.求表长，返回L中元素个数
 void DispList(SqList *L);	//5.输出表，若表为非空，输出L中所有元素的值
 int GetElem(SqList *L,int i,ElemType &e);	//6.取表中元素，用e返回表中第i个元素的值
@@ -62,9 +62,9 @@ void Destroy(SqList *L)	//销毁线性表
 {
 	free(L);
 }
-int ListEmpty(SqList *L)	//清空线性表，将L置为空表
+int ListEmpty(SqList *L)	//判断线性表是否为空
 {
-	return(L->length==0);		//what the fuck!!!
+	return(L->length==0);		//如果顺序表长度为0 则返回1 如果不为空 则返回0
 }
 int ListLength(SqList *L)	//求表长，返回L中元素个数
 {
