@@ -18,11 +18,15 @@ void DispList(SqList *L);	//5.Êä³ö±í£¬Èô±íÎª·Ç¿Õ£¬Êä³öLÖĞËùÓĞÔªËØµÄÖµ
 int GetElem(SqList *L,int i,ElemType &e);	//6.È¡±íÖĞÔªËØ£¬ÓÃe·µ»Ø±íÖĞµÚi¸öÔªËØµÄÖµ
 int LocateElem(SqList *L,ElemType e);	//7.¶¨Î»±íÖĞÔªËØ£¬·µ»Ø±íÖĞµÚÒ»¸öÓëeÏàµÈµÄÔªËØÎ»Ğò
 int ListInsert(SqList *&L,int i,ElemType e);	//8.²åÈëÔªËØ£¬ÔÚLµÄµÚi¸öÎ»ÖÃ²åÈëeµÄÖµ£¬L³¤¶ÈÔö¼Ó1
-int ListDelete(SqList *L,int i,ElemType &e);	//9.É¾³ıÔªËØ£¬½«LÖĞµÚi¸öÔªËØÉ¾³ı£¬ÓÃe·µ»ØÆäÖµ£¬L³¤¶È¼õÉÙ1
+int ListDelete(SqList *&L,int i,ElemType &e);	//9.É¾³ıÔªËØ£¬½«LÖĞµÚi¸öÔªËØÉ¾³ı£¬ÓÃe·µ»ØÆäÖµ£¬L³¤¶È¼õÉÙ1
 void delnode1(SqList *&L,ElemType x);
 //10.É¾³ıÏßĞÔ±íÖĞËùÓĞµÈÓÚxµÄÔªËØ
 void delnode2(SqList *&L,ElemType x);
 //11.É¾³ıÏßĞÔ±íÖĞËùÓĞµÈÓÚxµÄÔªËØ
+void move1(SqList *&L);
+//12.ÒÔµÚÒ»¸öÔªËØÎª»ù×¼½«Ğ¡ÓÚµÈÓÚËüµÄÔªËØ·Åµ½ËüÇ°Ãæ£¬´óÓÚËüµÄÔªËØ·Åµ½ËüµÄºóÃæ 
+void move2(SqList *&L);
+//13.ÒÔµÚÒ»¸öÔªËØÎª»ù×¼½«Ğ¡ÓÚµÈÓÚËüµÄÔªËØ·Åµ½ËüÇ°Ãæ£¬´óÓÚËüµÄÔªËØ·Åµ½ËüµÄºóÃæ 
 int main()
 {
 	SqList *L;
@@ -30,16 +34,18 @@ int main()
 	printf("(1)³õÊ¼»¯Ë³Ğò±íL\n");
 	InitList(L);
 	printf("(2)ÒÀ´Î²ÉÓÃÎ²²å·¨²åÈëa,b,c,d,eÔªËØ\n");
-	ListInsert(L,1,'a');
-	ListInsert(L,2,'b');
-	ListInsert(L,3,'c');
-	ListInsert(L,4,'a');
+	ListInsert(L,1,'c');
+	ListInsert(L,2,'d');
+	ListInsert(L,3,'e');
+	ListInsert(L,4,'f');
 	ListInsert(L,5,'a');
 	ListInsert(L,6,'b');
 	ListInsert(L,7,'c');
-	ListInsert(L,8,'b');
-	ListInsert(L,9,'b');
+	ListInsert(L,8,'d');
+	ListInsert(L,9,'e');
 	printf("(3)Êä³öË³Ğò±íL:");
+	DispList(L);
+	move2(L);
 	DispList(L);
 	printf("(4)Ë³Ğò±íL³¤¶È=%d\n",ListLength(L));
 	printf("(5)Ë³Ğò±íLÎª%s\n",(ListEmpty(L)?"¿Õ":"·Ç¿Õ"));
@@ -51,15 +57,15 @@ int main()
 	printf("(9)Êä³öË³Ğò±íL:");
 	DispList(L);
 	printf("(10)É¾³ıLµÄµÚ3¸öÔªËØ\n");
-    	ListDelete(L,3,e);
+    ListDelete(L,3,e);
 	printf("(11)Êä³öË³Ğò±íL:");
 	DispList(L);
-	printf("(12)É¾³ıË³Ğò±íLÖĞµÄËùÓĞa");
-	delnode1(L,'a');
+	printf("(12)É¾³ıË³Ğò±íLÖĞµÄËùÓĞf");
+	delnode1(L,'f');
 	printf("(13)Êä³öË³Ğò±íL:");
 	DispList(L);
-	printf("(14)É¾³ıË³Ğò±íLÖĞµÄËùÓĞb");
-	delnode2(L,'b');
+	printf("(14)É¾³ıË³Ğò±íLÖĞµÄËùÓĞa");
+	delnode2(L,'a');
 	printf("(15)Êä³öË³Ğò±íL:");
 	DispList(L);
 	printf("(16)ÊÍ·ÅË³Ğò±íL\n");
@@ -124,18 +130,19 @@ int ListInsert(SqList *&L,int i,ElemType e)	//²åÈëÔªËØ£¬ÔÚLµÄµÚi¸öÎ»ÖÃ²åÈëeµÄÖµ£
 	return 1;
 
 }
-int ListDelete(SqList *L,int i,ElemType &e)//É¾³ıÔªËØ£¬½«LÖĞµÚi¸öÔªËØÉ¾³ı£¬ÓÃe·µ»ØÆäÖµ£¬L³¤¶È¼õÉÙ1
+int ListDelete(SqList *&L,int i,ElemType &e)//É¾³ıÔªËØ£¬½«LÖĞµÚi¸öÔªËØÉ¾³ı£¬ÓÃe·µ»ØÆäÖµ£¬L³¤¶È¼õÉÙ1
 {
 	int j;
-	if(j<1||j>L->length)
+	if(i<1||i>L->length)
 		return 0;
 	i--;	//½«Î»Ğòi×ª»¯ÎªÊı×éÏÂ±ê
-	for(j=L->length;j>i;j--)
-		L->elem[j]=L->elem[j-1];
 	e=L->elem[i];
+	for(j=i;j<L->length-1;j++)
+		L->elem[j]=L->elem[j+1];
 	L->length--;
 	return 1;
 }
+
 void delnode1(SqList *&L,ElemType x)
 {
 	int k = 0,i;				//kÓÃÓÚ¼ÇÂ¼²»ÎªxµÄÔªËØ¸öÊı
@@ -161,4 +168,50 @@ void delnode2(SqList *&L,ElemType x)
 		
 	}
 	L->length -= k;			//Ë³Ğò±í³¤¶ÈµÈÓÚk
+}
+void move1(SqList *&L)
+{
+	int i = 0,j = L->length - 1;
+	ElemType tmp;	//tmp×÷ÎªÁÙÊ±±äÁ¿ÓÃÓÚi,j½»»»µÄÖĞ¼ä±äÁ¿
+	ElemType pivot = L->elem[0];	//ÒÔelem[0]Îª»ù×¼½øĞĞ±È½Ï
+	while(i < j){
+		while(i < j && L->elem[j] > pivot){	
+			j--;	//´ÓºóÏòÇ°É¨Ãè£¬ÕÒµ½Ò»¸ö<=pivotµÄÔªËØ£¬ÔİÍ£É¨Ãè
+		}
+		while(i < j && L->elem[i] <= pivot){
+			i++;	//´ÓÇ°ÏòºóÉ¨Ãè£¬ÕÒµ½Ò»¸ö>pivotµÄÔªËØ£¬ÔİÍ£É¨Ãè
+		}
+		if(i < j){
+			tmp = L->elem[i];
+			L->elem[i] = L->elem[j];
+			L->elem[j] = tmp;
+		}	//½»»»L->elem[i]ºÍL->elem[j]
+	}
+	//whileÑ­»·Ö´ĞĞµ½i=jÎªÖ¹
+	//Ö´ĞĞµ½Õâ¸öµØ·½¾ÍÒÑ¾­ÊÇ°Ñ´óÓÚ»ù×¼µÄÊı¶¼·Åµ½ÁËºó°ë±ßÊı×é
+	//Ğ¡ÓÚ»ù×¼µÄÊı¶¼·Åµ½ÁËÇ°°ë±ßÊı×éÀïÁË
+	tmp = L->elem[0];
+	L->elem[0] = L->elem[j];
+	L->elem[j] = tmp;
+	//½»»»L->elem[0]ºÍL->elem[j]
+	//´ËÊ±i = j iºÍjÖ¸ÏòÍ¬Ò»¸öÔªËØ
+}
+void move2(SqList *&L)
+{
+	int i = 0,j = L->length - 1;
+	ElemType pivot = L->elem[0];	//°Ñelem[0]×÷Îª»ù×¼½øĞĞ·ÅÈëµ½pivotÖĞÈ¥
+	while(i < j){
+	//whileÑ­»·Ö´ĞĞµ½i=jÎªÖ¹
+		while(i < j && L->elem[j] > pivot){	
+			j--;	//´ÓºóÏòÇ°É¨Ãè£¬ÕÒµ½Ò»¸ö<=pivotµÄÔªËØ£¬ÔİÍ£É¨Ãè
+			L->elem[i] = L->elem[j];	
+			//°ÑÕâ¸öĞ¡ÓÚµÈÓÚ»ù×¼µÄÔªËØÇ°ÒÆµ½µÚi¸öÎ»ÖÃ
+		}
+		while(i < j && L->elem[i] <= pivot){
+			i++;	//´ÓÇ°ÏòºóÉ¨Ãè£¬ÕÒµ½Ò»¸ö>pivotµÄÔªËØ£¬ÔİÍ£É¨Ãè
+			L->elem[j] = L->elem[i];
+			//°ÑÕâ¸ö´óÓÚ»ù×¼µÄÔªËØºóÒÆµ½µÚj¸öÎ»ÖÃ
+		}
+	}
+	L->elem[j] = pivot;
 }

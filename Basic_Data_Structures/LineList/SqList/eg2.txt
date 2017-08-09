@@ -1,0 +1,68 @@
+例题2.1
+题目要求：
+设顺序表L有10个整数。设计一个算法，以第一个元素为分界线（基准 ），将所有小于等它的元素移到该前面，将所有大于它的元素移到该后面 。
+
+答案：
+解法一：
+
+以pivot = L->elem[0]为基准
+j从后向前查找小于等于pivot的元素
+i从前向后查找大于pivot的元素
+找到一个将i和j的元素进行交换
+最后当j>i时，讲elem[0]和的元素进行交换
+
+void move1(SqList *&L)
+{
+	int i = 0,j = L->length - 1;
+	ElemType tmp;	//tmp作为临时变量用于i,j交换的中间变量
+	ElemType pivot = L->elem[0];	//以elem[0]为基准进行比较
+	while(i < j){
+		while(i < j && L->elem[j] > pivot){	
+			j--;	//从后向前扫描，找到一个<=pivot的元素，暂停扫描
+		}
+		while(i < j && L->elem[i] <= pivot){
+			i++;	//从前向后扫描，找到一个>pivot的元素，暂停扫描
+		}
+		if(i < j){
+			tmp = L->elem[i];
+			L->elem[i] = L->elem[j];
+			L->elem[j] = tmp;
+		}	//交换L->elem[i]和L->elem[j]
+	}
+	//while循环执行到i=j为止
+	//执行到这个地方就已经是把大于基准的数都放到了后半边数组
+	//小于基准的数都放到了前半边数组里了
+	tmp = L->elem[0];
+	L->elem[0] = L->elem[j];
+	L->elem[j] = tmp;
+	//交换L->elem[0]和L->elem[j]
+	//此时i = j i和j指向同一个元素
+}
+
+
+解法二：
+以pivot = L->elem[0]为基准
+j从后向前查找小于等于pivot的元素：前移
+i从前向后查找大于pivot的元素：后移
+
+void move2(SqList *&L)
+{
+	int i = 0,j = L->length - 1;
+	ElemType pivot = L->elem[0];	//把elem[0]作为基准进行放入到pivot中去
+	while(i < j){
+	//while循环执行到i=j为止
+		while(i < j && L->elem[j] > pivot){	
+			j--;	//从后向前扫描，找到一个<=pivot的元素，暂停扫描
+			L->elem[i] = L->elem[j];	
+			//把这个小于等于基准的元素前移到第i个位置
+		}
+		while(i < j && L->elem[i] <= pivot){
+			i++;	//从前向后扫描，找到一个>pivot的元素，暂停扫描
+			L->elem[j] = L->elem[i];
+			//把这个大于基准的元素后移到第j个位置
+		}
+	}
+	L->elem[j] = pivot;
+}
+conclusion：
+解法二比解法一更好，因为直接移动比交换要少一次中间变量值的移动
