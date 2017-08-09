@@ -1,0 +1,42 @@
+例题2.1
+题目要求：
+已知长度为n的线性表L采用顺序存储结构。设计一个时间复杂度为O(n)、空间复杂度为O(1)的算法，该算法删除线性表中所有值为x的数据元素。
+
+答案：
+解法一：
+扫描顺序表L,重建L,只包含不等于x的元素
+
+void delnode1(SqList *&L,ElemType x)
+{
+	int k = 0,i;				//k用于记录不为x的元素个数
+	for(i = 0;i < L->length;i++){		//从数组下标0开始扫描顺序表
+		if(L->elem[i] != x){		//若当前元素不等于x，将其插入L中	
+			L->elem[k] = L->elem[i];
+			k++;				//不等于x的元素数目+1
+		}
+	}
+	L->length = k;			//顺序表长度等于k
+}
+
+
+解法二：
+将不为x的元素前移k个位置，最后修改L的长度。
+void delnode2(SqList *&L,ElemType x)
+{
+	int k = 0,i = 0;				//k用于记录等于x的元素个数
+	while(i < L->length){
+		if(L->elem[i] == x){
+			k++;
+		}
+		else{
+			L->elem[i - k] = L->elem[i];	//将不为x的元素前移k个位置
+		}
+		i++;
+		
+	}
+	L->length -= k;			//顺序表长度等于k
+}
+
+
+conclusion:
+其实还是重建表的方法易于理解，当然方法二画个图感受一下其实也不难理解

@@ -19,7 +19,10 @@ int GetElem(SqList *L,int i,ElemType &e);	//6.取表中元素，用e返回表中第i个元素的
 int LocateElem(SqList *L,ElemType e);	//7.定位表中元素，返回表中第一个与e相等的元素位序
 int ListInsert(SqList *&L,int i,ElemType e);	//8.插入元素，在L的第i个位置插入e的值，L长度增加1
 int ListDelete(SqList *L,int i,ElemType &e);	//9.删除元素，将L中第i个元素删除，用e返回其值，L长度减少1
-
+void delnode1(SqList *&L,ElemType x);
+//10.删除线性表中所有等于x的元素
+void delnode2(SqList *&L,ElemType x);
+//11.删除线性表中所有等于x的元素
 int main()
 {
 	SqList *L;
@@ -30,8 +33,12 @@ int main()
 	ListInsert(L,1,'a');
 	ListInsert(L,2,'b');
 	ListInsert(L,3,'c');
-	ListInsert(L,4,'d');
-	ListInsert(L,5,'e');
+	ListInsert(L,4,'a');
+	ListInsert(L,5,'a');
+	ListInsert(L,6,'b');
+	ListInsert(L,7,'c');
+	ListInsert(L,8,'b');
+	ListInsert(L,9,'b');
 	printf("(3)输出顺序表L:");
 	DispList(L);
 	printf("(4)顺序表L长度=%d\n",ListLength(L));
@@ -47,7 +54,15 @@ int main()
     	ListDelete(L,3,e);
 	printf("(11)输出顺序表L:");
 	DispList(L);
-	printf("(12)释放顺序表L\n");
+	printf("(12)删除顺序表L中的所有a");
+	delnode1(L,'a');
+	printf("(13)输出顺序表L:");
+	DispList(L);
+	printf("(14)删除顺序表L中的所有b");
+	delnode2(L,'b');
+	printf("(15)输出顺序表L:");
+	DispList(L);
+	printf("(16)释放顺序表L\n");
 	Destroy(L);
 	return 0;
 }
@@ -121,4 +136,29 @@ int ListDelete(SqList *L,int i,ElemType &e)//删除元素，将L中第i个元素删除，用e返
 	L->length--;
 	return 1;
 }
-
+void delnode1(SqList *&L,ElemType x)
+{
+	int k = 0,i;				//k用于记录不为x的元素个数
+	for(i = 0;i < L->length;i++){		//从数组下标0开始扫描顺序表
+		if(L->elem[i] != x){		//若当前元素不等于x，将其插入L中	
+			L->elem[k] = L->elem[i];
+			k++;				//不等于x的元素数目+1
+		}
+	}
+	L->length = k;			//顺序表长度等于k
+}
+void delnode2(SqList *&L,ElemType x)
+{
+	int k = 0,i = 0;				//k用于记录等于x的元素个数
+	while(i < L->length){
+		if(L->elem[i] == x){
+			k++;
+		}
+		else{
+			L->elem[i - k] = L->elem[i];	//将不为x的元素前移k个位置
+		}
+		i++;
+		
+	}
+	L->length -= k;			//顺序表长度等于k
+}
