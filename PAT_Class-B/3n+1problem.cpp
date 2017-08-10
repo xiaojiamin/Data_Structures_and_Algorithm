@@ -1,7 +1,8 @@
 #include<stdio.h>
 int main()
 {
-	int n,b=0;
+	int n,step=0;
+	//变量命名还是有意义一点的好
 	scanf("%d",&n);
 	while(n!=1)
 	{
@@ -9,8 +10,8 @@ int main()
 			n=n/2;
 		else
 			n=(3*n+1)/2;
-		b++;
+		step++;
 	}
-	printf("%d",b);
+	printf("%d",step);
 	return 0;
 } 
