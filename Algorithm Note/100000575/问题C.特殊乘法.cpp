@@ -12,7 +12,7 @@ int main()
 			}
 			a /= 10;
 		}
-		printf("%d",sum);
+		printf("%d\n",sum);
 	}
 	
 	return 0;
