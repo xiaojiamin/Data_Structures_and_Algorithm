@@ -4,7 +4,7 @@ typedef long long LL;
 
 int main()
 {
-	int T;	//	intå‹çš„èŒƒå›´æ˜¯-2^32æ¬¡æ–¹åˆ°2^32-1
+	int T;	//	intĞÍµÄ·¶Î§ÊÇ-2^32µ½2^32-1
 	LL a,b,c;
 	while(scanf("%d",&T) != EOF){
 		if(T > 0 && T <= 10){
@@ -12,7 +12,7 @@ int main()
 		int t = T;
 		while(T){
 			--T;
-			scanf("%lld%lld%lld",&a,&b,&c);		//æ³¨æ„long long å‹ç”¨%lldè¾“å…¥
+			scanf("%lld%lld%lld",&a,&b,&c);		//Êä³ölong long ÒªÓÃ%lld 
 			if(a + b > c){
 				printf("Case #%d: true\n",t - T);
 			}
