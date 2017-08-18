@@ -13,7 +13,9 @@ $git push myusb master
 #从服务端取回内容
 #git pull myusb master
        
-#统计.py代码行数
-$ find . -name "*.py" | xargs grep -v "^$" | wc -l
+#统计.cpp代码行数
+$ find . -name "*.cpp" | xargs grep -v "^$" | wc -l
+#去//注释
+$ find . -name "*.cpp"|xargs cat|grep -v -e ^$ -e ^\s*\/\/.*$|wc -l
 
 
