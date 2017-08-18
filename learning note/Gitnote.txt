@@ -1,0 +1,19 @@
+#新建一个库
+$ git init gitrepository(库名)
+#将目录下的全部文件添加到索引中
+git add . (.默认所有，单独写文件名即选择文件添加)                
+#将变化提交到仓库
+git commit -m "提交描述信息"       
+#新建一个空的可在多用户间共享的库
+$ git --bare init --shared gitrepository(远程库名)
+#将u盘某空目录设为远程库(此时目录位于你要上传的那个库)
+$ git remote add myusb(这只是个别名，可以换成其他的) E:/gitfolder(远程库名)
+#将本地内容推送到服务端仓库中
+$git push myusb master
+#从服务端取回内容
+#git pull myusb master
+       
+#统计.py代码行数
+$ find . -name "*.py" | xargs grep -v "^$" | wc -l
+
+
