@@ -10,7 +10,6 @@ int main()
 	//a[maxl]数组用于存储树木的状态
 	// 元素为1表示该下标处有树，元素为0表示该下标处树被移走了 
 	int c,d,k;
-	int max = maxl - 1;
 	//c,d分别表示每组的一对数字，num[maxl]用于存储所有轮测试完成后的结果 
 	while(scanf("%d%d",&L,&M) != EOF){
 		if(L == 0 && M == 0)	break;
@@ -26,20 +25,16 @@ int main()
 				a[j] = 0;
 			}
 		} 
-		
 		//输入M组c,d的值，将数组a的下标在c,d之间的元素赋值为0，表示移走了树 
 		k = 0;
 		for(int i = 0;i <= L;i++){
-			if(a[i] == 0){
+			if(a[i] == 1){
 				k++;	
 			}
 		}
-		//统计这一轮测试过后数组中剩余元素1的数量，存放到数组a中的最后 
-		a[max] = L+1-k;
-		max--;
-	}
-	for(int i = maxl - 1;i > max;i--)
-		printf("%d\n",a[i]);	
+		printf("%d\n",k);	
 		//打印输出结果 
+	}
+	
 	return 0;
 } 

@@ -22,16 +22,16 @@
 
 样例输入
 10
-C J
-J B
-C B
-B B
-B C
-C C
-C B
-J B
-B C
-J J
+C J1
+J B1
+C B2
+B B3
+B C1
+C C3
+C B2
+J B1
+B C1
+J J3
 样例输出
 5 3 2
 2 3 5

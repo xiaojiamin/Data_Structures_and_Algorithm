@@ -1,4 +1,4 @@
 # depslib dependency file v1.0
-1503667476 source:d:\code_oschina\data_structures_and_algorithm\test\main.cpp
-	<stdio.h>
+1503881972 source:d:\code_oschina\data_structures_and_algorithm\test\main.cpp
+	<cstdio>
 
