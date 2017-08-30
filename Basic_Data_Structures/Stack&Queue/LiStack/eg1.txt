@@ -1,0 +1,48 @@
+例3.4	
+
+编写一个算法判断输入的表达式中的括号是否配对（假设只含有左，右圆括号）
+
+一个表达是中左右括号是按照最近位置配对的，可以利用栈来求解
+
+解答：
+bool Match(char exp[],int n)
+{
+	int i = 0;
+	char e;
+	
+	bool match = true;
+	
+	LiStack *st;
+	InitStack(st);		//声明和初始化链栈
+	
+	while(i < n && match){
+		if(exp[i] == '('){
+			//如果是左括号则入栈
+			Push(st,exp[i]);
+		}
+		else if(exp[i] == ')'){
+			//如果是右括号
+			if(GetTop(st,e) == true){
+				//能取到栈顶元素则判断其是不是左括号
+				if(e != '('){
+					//不是左括号则表示不匹配
+					match = false;
+				}
+				else{
+					//是左括号表示匹配了一组括号，将栈顶元素出栈
+					Pop(st,e);
+				}
+			}
+			else{
+			//如果不能渠道栈顶元素则直接表示不匹配
+				match = false;
+			}
+		}
+	}
+	if(!StackEmpty){
+		//表达式扫描完之后如果链栈不为空的话，则表示不匹配
+		match = false;
+	}
+	DestroyStack(st);
+	return match;
+}
