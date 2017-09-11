@@ -1,0 +1,63 @@
+例3.5
+对于环形队列来说，如果知道了队头指针和队列中元素的个数就可以算出队尾指针，也就是说可以用队列中的元素个数代替队尾指针。
+请设计出这种环形队列的初始化，入队，出队和判空算法。
+
+分析：
+引例：已知front和rear，如何求队列中元素的个数呢？
+在非环形队列中可以使用count=rear-front
+环形队列中，可以使用count=(rear-front+MaxSize)%MaxSize
+
+于是，已知front，count求rear可以用
+rear=(front+count)%MaxSize
+于是，已知rear，count求front可以用
+front=(rear-count+MaxSize)%MaxSize
+
+解答：
+typedef struct{
+	ElemType data[MaxSize];
+	int front;	//队头指针
+	int count;	//元素个数
+}QuType;
+
+viod InitQutype(QuType *&qu)
+{
+	qu = (QuType *)malloc(sizeof(QuType));
+	qu->front = 0;
+	qu->count = 0;
+}
+
+bool EnQueue(QuType *&qu,ElemType x)
+{
+	int rear;	//设置临时尾指针，仅此函数内有效
+	if(qu->count == MaxSize)
+		return false;
+	else{
+		rear = (qu->front + qu->count) % MaxSize;
+		//为临时尾指针赋值
+		rear = (rear + 1) % MaxSize;
+		//尾指针循环+1
+		qu->data[rear] = x;
+		qu->count++;
+		return true;
+	}
+}
+
+bool DeQueue(QuType *&qu,ElemType &x)
+{
+	if(qu->count == 0)
+		return false;
+	else{
+		qu->front = (qu->front + 1) % MaxSize;
+		x = qu->data[qu->front];
+		qu->count--;
+		return true;
+	}
+}
+
+bool QueueEmpty(QuType *qu)
+{
+	return(qu->count == 0);
+}
+
+
+

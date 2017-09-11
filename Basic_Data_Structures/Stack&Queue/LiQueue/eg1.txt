@@ -1,0 +1,52 @@
+例3.6
+采用一个不带头节点只有一个尾节点的指针rear的循环单链表存储队列，设计队列的初始化，进队和出队等算法。
+
+分析：
+用一个只有尾指针的循环单链表来存储队列
+也就是说这个队列只能通过尾指针rear被唯一标识
+
+解答：
+void initQueue(LinkList *&rear)
+{
+	rear = NULL;
+}
+
+bool queueEmpty(LinkList *rear)
+{
+	return(rear == NULL);
+}
+
+void enQueue(LinkList *&rear,ElemType x)
+{
+	LinkList *p;
+	p = (LinkList *)malloc(sizeof(LinkList));
+	p->data = x;
+	if(rear == NULL){
+		p->next = p;
+		rear = p;
+	}
+	else{
+		p->next = rear->next;
+		rear->next = p;
+		rear = p;
+	}
+}
+
+bool deQueue(LinkList *&rear,ElemType &x)
+{
+	LinkList *q;
+	if(rear == NULL)
+		return false;
+	else if(rear->next == rear){
+		x = rear->data;
+		free(rear);
+		rear = NULL;
+	}
+	else{
+		q = rear->next;
+		x = q->data;
+		rear->next = q->next;
+		free(q);
+	}
+	return true;
+}

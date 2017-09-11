@@ -53,19 +53,5 @@ bool enQueue(LiQueue *&q,ElemType e)
     }
 }
 
-bool deQueue(LiQueue *&q,ElemType &e)
-{
-    QNode *t;
-    if(q->rear == NULL)
-        return false;
-    t = q->front;
-    if(q->front == q->rear)
-        q->front = q->rear = NULL;
-    else
-        q->front = q->front->next;
-    e = t->data;
-    free(t);
-    return true;
-}
-
+bool deQueue(LiQueue *&q,Ele)
 

@@ -61,6 +61,7 @@ bool enQueue(SqQueue *&q,ElemType e)
 bool deQueue(SqQueue *&q,ElemType &e)
 {
     if(q->front == q->rear)
+		//¶Ó¿Õ£¬ÏÂÒç³ö
         return false;
     q->front++;
     e = q->data[q->front];
