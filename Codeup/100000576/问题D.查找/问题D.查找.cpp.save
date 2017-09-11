@@ -4,10 +4,10 @@
 
 int main()
 {
-
+    
     int a[max],b[max];
-    int n,m,YES;
-    while(scanf("%d",&n) != EOF){
+    int n,m,counter;
+    while(Scanf("%d",&n) != EOF){
         for(int i = 0;i < n;i++){
             scanf("%d",&a[i]);
         }
@@ -16,17 +16,12 @@ int main()
             scanf("%d",&b[i]);
         }
         for(int i = 0;i < m;i++){
-            YES = 0;
             for(int j = 0;j < n;j++){
                 if(a[j] == b[i]){
-                    YES++;
-                    break;
+                    
                 }
             }
-            if(YES)
-                printf("YES\n");
-            else
-                printf("NO\n");
+            printf("YES\n");
         }
     }
     return 0;
