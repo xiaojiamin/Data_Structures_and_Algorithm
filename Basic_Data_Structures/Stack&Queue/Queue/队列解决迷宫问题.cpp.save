@@ -15,7 +15,7 @@ Email: pumpkinor@163.com
 typedef struct{
     int row;    //定义方块所在行
     int column; //定义方块所在列
-    int pre;   //表示上一块方块在队列中的下标
+    int location;   //表示上一块方块在队列中的下标
 }Box;   //定义方块类型
 typedef struct{
     Box data[MaxSize];
