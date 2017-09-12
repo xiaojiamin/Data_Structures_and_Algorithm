@@ -7,7 +7,7 @@ Email: pumpkinor@163.com
 *****************************************/
 #include<stdio.h>
 
-#define MaxSize 100
+#define MaxSize 300
 #define M 8
 #define N 8
 
@@ -72,7 +72,7 @@ bool mgpath(int xi,int yi,int xe,int ye)
         find = 0;
         while(location < 4 && find == 0){
             location++;
-                switch(location){
+            switch(location){
                 case 0:
                     row = st.data[st.top].row - 1;
                     column = st.data[st.top].column;
