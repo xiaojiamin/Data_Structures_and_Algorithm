@@ -10,23 +10,23 @@ typedef struct
 }SqStack;
 
 void InitStack(SqStack *&s);
-//初始化顺序存储栈
+    //初始化顺序存储栈
 void DestroyStack(SqStack *&s);
-//销毁顺序栈
+    //销毁顺序栈
 bool StackEmpty(SqStack *s);
-//判断栈是否为空，空栈时返回true
+    //判断栈是否为空，空栈时返回true
 int StackLength(SqStack *s);
-//求栈的长度
+    //求栈的长度
 bool Push(SqStack *&s,ElemType e);
-//进栈操作
+    //进栈操作
 bool Pop(SqStack *&s,ElemType &e);
-//出栈操作
+    //出栈操作
 bool GetTop(SqStack *&s,ElemType &e);
-//取栈顶元素
+    //取栈顶元素
 void DispStack(SqStack *s);
-//输出栈中的所有元素
+    //输出栈中的所有元素
 bool symmetry(ElemType str[]);
-//判断一个字符串是否对称
+    //判断一个字符串是否对称
 
 int main()
 {

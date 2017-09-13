@@ -63,7 +63,7 @@ int main()
     {
         printf("输入栈的第%d个元素\n",i);
         ++S.top;
-        scanf("%d",S.top-1);
+        scanf("%d",&n);*(S.top-1);
     }
     cout << "……本栈是空栈吗？？……" << endl;
     if (StackEmpty(S) == 1)
